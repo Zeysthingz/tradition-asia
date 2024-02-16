@@ -16,5 +16,7 @@ provider "aws" {
 module "vpc" {
   source     = "./modules/vpc"
   aws_region = var.aws_region  # Pass the AWS region directly
-  cidr_block = "10.3.0.0/16"
+  cidr_block = var.cidr_block  # Pass the CIDR block directly
+  subnet_cidr_blocks = var.subnet_cidr_blocks  # Pass the subnet CIDR blocks directly
+
 }
