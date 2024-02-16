@@ -49,3 +49,12 @@ resource "aws_subnet" "subnet_3" {
       Name = "demo-subnet-03"
     }
 }
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
+# create gateway
+resource "aws_internet_gateway" "demo_igw" {
+  vpc_id = aws_vpc.demo_vcp.id
+
+  tags = {
+    Name = "demo-igw"
+  }
+}
