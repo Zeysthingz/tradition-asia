@@ -1,4 +1,3 @@
-# modules/vpc/variables.tf
 
 variable "aws_region" {
   description = "AWS region"
