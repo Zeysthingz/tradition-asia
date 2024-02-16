@@ -49,12 +49,47 @@ resource "aws_subnet" "subnet_3" {
       Name = "demo-subnet-03"
     }
 }
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
+
 # create gateway
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
 resource "aws_internet_gateway" "demo_igw" {
   vpc_id = aws_vpc.demo_vcp.id
 
   tags = {
     Name = "demo-igw"
   }
+}
+
+
+# create route table
+resource "aws_route_table" "demo_rt" {
+  vpc_id =  aws_vpc.demo_vcp.id
+
+  route {
+    //associated subnet can reach everywhere
+    cidr_block = var.rt_cidr_block
+    //RT uses this IGW to reach internet
+    gateway_id = aws_internet_gateway.demo_igw.id
+  }
+
+  tags = {
+    Name = "demo_rt"
+  }
+}
+
+# associate rt to subnets
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint_route_table_association
+resource "aws_route_table_association" "associate_subnet_1" {
+  subnet_id      = aws_subnet.subnet_1.id
+  route_table_id = aws_route_table.demo_rt.id
+}
+
+resource "aws_route_table_association" "associate_subnet_2" {
+  subnet_id      = aws_subnet.subnet_2.id
+  route_table_id = aws_route_table.demo_rt.id
+}
+
+resource "aws_route_table_association" "associate_subnet_3" {
+  subnet_id      = aws_subnet.subnet_3.id
+  route_table_id = aws_route_table.demo_rt.id
 }

@@ -16,3 +16,7 @@ variable "subnet_cidr_blocks" {
   description = "List of CIDR blocks for subnets"
   type        = list(string)
 }
+
+variable "rt_cidr_block" {
+  type = string
+}
