@@ -28,6 +28,8 @@ module "ec2" {
   instance_count   =var.instance_count
   vpc_id           = module.vpc.vpc_id
   subnet_id        = module.vpc.subnet_1_id
+  subnet_id2       = module.vpc.subnet_2_id
+  subnet_id3       = module.vpc.subnet_3_id
   ec2_type         = var.ec2_type
   key_pair_name    = var.key_pair_name
   private_key_path = var.private_key_path

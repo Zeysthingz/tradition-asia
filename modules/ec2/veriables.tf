@@ -35,5 +35,11 @@ variable "subnet_id" {
 }
 
 
+variable "subnet_id2" {
+  type = string
+}
 
 
+variable "subnet_id3" {
+  type = string
+}
