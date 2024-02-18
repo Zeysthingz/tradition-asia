@@ -15,3 +15,8 @@ echo "---------------------------  STARTING APACHE   ---------------------------
 systemctl start httpd
 systemctl enable httpd
 
+systemctl status httpd
+
+# Copy custom index.html file to Apache document root
+echo "---------------------------  COPYING CUSTOM INDEX.HTML   ---------------------------"
+cp /projects/tradition-asia-assignment/modules/ec2/index.html /var/www/html/index.html

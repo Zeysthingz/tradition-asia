@@ -47,7 +47,7 @@ resource "aws_instance" "ec2_instance" {
   count         = var.instance_count
   ami           = "ami-03614aa887519d781"
   instance_type = "t2.micro"
-#   user_data     = file("${path.module}/user-data.sh") # Provide the relative path to your user_data.sh script
+  user_data     = file("${path.module}/user-data.sh") # Provide the relative path to your user_data.sh script
   key_name      = var.key_pair_name
   subnet_id     =var.subnet_id
   vpc_security_group_ids = [aws_security_group.demo_security_group.id]  # Use the custom security group
