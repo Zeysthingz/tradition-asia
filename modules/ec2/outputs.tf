@@ -7,7 +7,7 @@
 # }
 
 data "aws_autoscaling_groups" "demo_autoscale" {
-  names = ["demo-autoscaling-group"]  # Specify the name of your Auto Scaling Group
+  names = ["unique-demo3-autoscaling-group"]  # Specify the name of your Auto Scaling Group
 }
 
 output "ec2_instance_ids" {
