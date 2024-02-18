@@ -53,7 +53,7 @@ resource "aws_security_group" "demo_security_group" {
 # https://spacelift.io/blog/terraform-autoscaling-group
 
 resource "aws_launch_template" "template" {
-  name_prefix     = "unique-demo-launch-template-v3-"
+  name_prefix     = "unique-demo-launch-template-v1"
   image_id        = "ami-03614aa887519d781"
   instance_type   = "t2.micro"
   user_data       = base64encode(file("${path.module}/user-data.sh"))
@@ -75,7 +75,7 @@ resource "aws_launch_template" "template" {
 }
 
 resource "aws_autoscaling_group" "demo_autoscale" {
-  name                  = "unique-demo3-autoscaling-group"
+  name                  = "unique-demo-autoscaling-group"
   desired_capacity      = 2
   max_size              = 4
   min_size              = 2
