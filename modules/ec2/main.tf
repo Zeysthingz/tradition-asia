@@ -20,7 +20,12 @@ resource "aws_security_group" "demo_security_group" {
   description = "Allow inbound IP on ports 22, 80, and 443"
   vpc_id      = var.vpc_id  # Replace with the actual VPC ID from your module
 
-
+   egress {
+      from_port   = 0
+      to_port     = 0
+      protocol    = -1
+      cidr_blocks = ["0.0.0.0/0"]
+    }
   ingress {
     from_port   = 22
     to_port     = 22
@@ -76,7 +81,6 @@ resource "aws_autoscaling_group" "demo_autoscale" {
   min_size              = 2
   health_check_type     = "EC2"
   vpc_zone_identifier   = [var.subnet_id, var.subnet_id2, var.subnet_id3]
-  count                 = var.instance_count
 
   launch_template {
     id      = aws_launch_template.template.id
