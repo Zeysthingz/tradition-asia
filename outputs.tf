@@ -19,3 +19,7 @@ output "subnet_3_id" {
 }
 
 # EC2 LOG
+
+output "public_id" {
+  value = module.ec2.public_id
+}
