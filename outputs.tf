@@ -1,4 +1,3 @@
-
 # VPC LOG
 output "vpc_id" {
   description = "ID of the created VPC"
@@ -20,10 +19,7 @@ output "subnet_3_id" {
 
 # EC2 LOG
 
-# output "public_id" {
-#   value = module.ec2.public_id
-# }
-
 output "ec2_instance_ids" {
   value = module.ec2.ec2_instance_ids
 }
+
