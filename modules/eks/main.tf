@@ -47,12 +47,14 @@ module "eks" {
 
   vpc_id = var.vpc_id
 
-  scaling_config {
-    desired_size = 2
-    max_size     = 2
-    min_size     = 2
+  eks_managed_node_groups = {
+    eks_node_group = {
+      desired_capacity = 2
+      max_capacity     = 2
+      min_capacity     = 1
+      instance_type    = "t3.micro"
+    }
   }
-
 }
 
 
