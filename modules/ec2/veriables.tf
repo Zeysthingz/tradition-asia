@@ -43,3 +43,6 @@ variable "subnet_id2" {
 variable "subnet_id3" {
   type = string
 }
+variable "ssh_cidr_blocks" {
+  type = list(string)
+}

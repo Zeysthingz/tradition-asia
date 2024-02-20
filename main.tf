@@ -21,6 +21,10 @@ provider "aws" {
   region = "eu-central-1"  # Update the AWS region to Frankfurt
 }
 
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
 
 module "vpc" {
   source             = "./modules/vpc"
@@ -41,6 +45,8 @@ module "ec2" {
   ec2_type         = var.ec2_type
   key_pair_name    = var.key_pair_name
   private_key_path = var.private_key_path
+  ssh_cidr_blocks = ["${chomp(data.http.myip.response_body)}/32"]
+
 }
 
 
