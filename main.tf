@@ -9,6 +9,16 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
+terraform {
+  backend "s3" {
+    encrypt = true
+    bucket         = "demo-terraform-states"
+    key            = "demo/tfstate"
+    region         = "eu-central-1"
+    dynamodb_table = "tf-lock"
+  }
+}
+
 provider "aws" {
   region = "eu-central-1"  # Update the AWS region to Frankfurt
 }
